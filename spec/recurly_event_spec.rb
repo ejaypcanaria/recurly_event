@@ -60,7 +60,7 @@ describe RecurlyEvent do
       expect(RecurlyEvent.notifications.notifier.listening?("recurly.account.new")).to be_truthy
     end
 
-    context "when an event it subscribe with got published" do
+    context "when an event it subscribes with got published" do
       before do
         RecurlyEvent.subscribe "account.new", callable
       end
@@ -68,6 +68,28 @@ describe RecurlyEvent do
       it "processes the event" do
         expect(callable).to receive(:call).with(RecurlyEvent.parser.from_payload(payload))
         RecurlyEvent.publish "new_account_notification", payload
+      end
+    end
+
+    context "when the event name is a wildcard for a resource events" do
+      before do
+        RecurlyEvent.subscribe "account.", callable
+      end
+
+      it "subscribes to all the events on the resource" do
+        expect(callable).to receive(:call)
+        RecurlyEvent.publish "new_account_notification", payload
+
+        expect(callable).to receive(:call)
+        RecurlyEvent.publish "reactivated_account_notification", payload
+
+        expect(callable).to receive(:call)
+        RecurlyEvent.publish "cancelled_account_notification", payload
+      end
+
+      it "does not subscribe to other events" do
+        expect(callable).not_to receive(:call)
+        RecurlyEvent.publish "new_invoice_notification", payload
       end
     end
   end
