@@ -15,4 +15,12 @@ describe RecurlyEvent::Namespace do
       expect(subject.regexp_wrap("account.new")).to eq(/^#{escaped_name}/)
     end
   end
+
+  describe "#parse_with_namespace" do
+    it "parses a recurly event and add namespace to it" do
+      expect(subject.parse_with_namespace("new_account_notification")).to eq("recurly.account.new")
+      expect(subject.parse_with_namespace("past_due_invoice_notification")).to eq("recurly.invoice.past_due")
+      expect(subject.parse_with_namespace("billing_info_updated_notification")).to eq("recurly.billing_info.updated")
+    end
+  end
 end
