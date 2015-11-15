@@ -10,6 +10,11 @@ module RecurlyEvent
   class << self
     attr_accessor :notifications, :namespace, :parser
 
+    def configure(&block)
+      raise ArgumentError, "missing block" unless block_given?
+      yield self
+    end
+
     def process_request(request)
       parsed_request = parser.parse(request)
       publish(parsed_request.event_name, parsed_request.payload)

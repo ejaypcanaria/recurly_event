@@ -16,6 +16,22 @@ describe RecurlyEvent do
     expect(RecurlyEvent.namespace).not_to be nil
   end
 
+  describe "#configure" do
+    context "when block is given" do
+      it "yields itself to the block" do
+        RecurlyEvent.configure do |events|
+          expect(events).to eq(RecurlyEvent)
+        end
+      end
+    end
+
+    context "when no block is given" do
+      it "raises an argument error" do
+        expect { RecurlyEvent.configure }.to raise_error(ArgumentError)
+      end
+    end
+  end
+
   describe "#process_request" do
     let(:xml_string) { "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<new_account_notification>\n<account>\n<account_code>1</account_code>\n<username>john.lennon</username>\n</account>\n</new_account_notification>\n" }
     let(:request) { double(:request, body: double(string: xml_string)) }
