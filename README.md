@@ -1,4 +1,5 @@
 # RecurlyEvent
+[![Build Status](https://travis-ci.org/ejaypcanaria/recurly_event.svg)](https://travis-ci.org/ejaypcanaria/recurly_event) [![Code Climate](https://codeclimate.com/github/ejaypcanaria/recurly_event/badges/gpa.svg)](https://codeclimate.com/github/ejaypcanaria/recurly_event) [![Test Coverage](https://codeclimate.com/github/ejaypcanaria/recurly_event/badges/coverage.svg)](https://codeclimate.com/github/ejaypcanaria/recurly_event/coverage)
 
 RecurlyEvent is a simple Ruby DSL for managing [Recurly Webhooks](https://recurly.readme.io/v2.0/page/webhooks) inside a Rails application. This project is inspired by the [StripeEvent](https://github.com/integrallis/stripe_event/) gem and is built using pub/sub API of [ActiveSupport::Notifications](http://api.rubyonrails.org/classes/ActiveSupport/Notifications.html).
 
@@ -77,7 +78,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/ejaypcanaria/recurly_event. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/ejaypcanaria/recurly_event. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](CODE_OF_CONDUCT.md) code of conduct.
 
 
 ## License
