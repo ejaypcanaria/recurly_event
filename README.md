@@ -1,5 +1,5 @@
 # RecurlyEvent
-[![Build Status](https://travis-ci.org/ejaypcanaria/recurly_event.svg)](https://travis-ci.org/ejaypcanaria/recurly_event) [![Code Climate](https://codeclimate.com/github/ejaypcanaria/recurly_event/badges/gpa.svg)](https://codeclimate.com/github/ejaypcanaria/recurly_event) [![Test Coverage](https://codeclimate.com/github/ejaypcanaria/recurly_event/badges/coverage.svg)](https://codeclimate.com/github/ejaypcanaria/recurly_event/coverage)
+[![Build Status](https://travis-ci.org/ejaypcanaria/recurly_event.svg)](https://travis-ci.org/ejaypcanaria/recurly_event) [![Code Climate](https://codeclimate.com/github/ejaypcanaria/recurly_event/badges/gpa.svg)](https://codeclimate.com/github/ejaypcanaria/recurly_event) [![Test Coverage](https://codeclimate.com/github/ejaypcanaria/recurly_event/badges/coverage.svg)](https://codeclimate.com/github/ejaypcanaria/recurly_event/coverage) [![Gem Version](https://badge.fury.io/rb/recurly_event.svg)](https://badge.fury.io/rb/recurly_event)
 
 RecurlyEvent is a simple Ruby DSL for managing [Recurly Webhooks](https://recurly.readme.io/v2.0/page/webhooks) inside a Rails application. This project is inspired by the [StripeEvent](https://github.com/integrallis/stripe_event/) gem and is built using pub/sub API of [ActiveSupport::Notifications](http://api.rubyonrails.org/classes/ActiveSupport/Notifications.html).
 
