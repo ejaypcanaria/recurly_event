@@ -8,4 +8,8 @@ describe RecurlyEvent do
   it "has a notifications" do
     expect(RecurlyEvent.notifications).not_to be nil
   end
+
+  it "has a namespace" do
+    expect(RecurlyEvent.namespace).not_to be nil
+  end
 end
