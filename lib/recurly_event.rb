@@ -1,6 +1,11 @@
+require "active_support/notifications"
 require "recurly_event/version"
-require "recurly_event/engine"
+require "recurly_event/engine" if defined? Rails
 
 module RecurlyEvent
-  # Your code goes here...
+  class << self
+    attr_accessor :notifications
+  end
+
+  self.notifications = ActiveSupport::Notifications
 end
