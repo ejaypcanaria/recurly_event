@@ -7,6 +7,10 @@ module RecurlyEvent
       new(request)
     end
 
+    def self.from_payload(payload)
+      JSON.parse(payload.to_json, object_class: OpenStruct)
+    end
+
     def initialize(request)
       @request = request
     end
@@ -15,9 +19,8 @@ module RecurlyEvent
       hash_from_request.first.first
     end
 
-    def recurly_object
-      recurly_object_hash = hash_from_request.first.last
-      JSON.parse(recurly_object_hash.to_json, object_class: OpenStruct)
+    def payload
+      hash_from_request.first.last
     end
 
   private
