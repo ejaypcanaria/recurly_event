@@ -15,6 +15,10 @@ module RecurlyEvent
       yield self
     end
 
+    def all(callable=Proc.new {})
+      subscribe nil, callable
+    end
+
     def process_request(request)
       parsed_request = parser.parse(request)
       publish(parsed_request.event_name, parsed_request.payload)

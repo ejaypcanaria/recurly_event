@@ -32,6 +32,18 @@ describe RecurlyEvent do
     end
   end
 
+  describe "#all" do
+    it "subscribe to all the events" do
+      RecurlyEvent.all callable
+
+      expect(callable).to receive(:call)
+      RecurlyEvent.publish "new_account_notification", payload
+
+      expect(callable).to receive(:call)
+      RecurlyEvent.publish "processing_invoice_notification", payload
+    end
+  end
+
   describe "#process_request" do
     let(:xml_string) { "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<new_account_notification>\n<account>\n<account_code>1</account_code>\n<username>john.lennon</username>\n</account>\n</new_account_notification>\n" }
     let(:request) { double(:request, body: double(string: xml_string)) }
