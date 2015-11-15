@@ -9,6 +9,22 @@ module RecurlyEvent
 
   class << self
     attr_accessor :notifications, :namespace, :parser
+
+    def process_request(request)
+      parsed_request = parser.parse(request)
+      publish(parsed_request.event_name, parsed_request.payload)
+    end
+
+    def publish(event_name, payload)
+      notifications.instrument(namespace.parse_with_namespace(event_name), payload)
+    end
+
+    def subscribe(event_name, callable=Proc.new {})
+      notifications.subscribe namespace.regexp_wrap(event_name) do |*args|
+        recurly_object = parser.from_payload(args.last)
+        callable.call(recurly_object)
+      end
+    end
   end
 
   self.parser        = Parser
