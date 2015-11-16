@@ -41,5 +41,9 @@ describe RecurlyEvent::Parser do
       expect(payload["account"]).to have_key("last_name")
       expect(payload["account"]).to have_key("company_name")
     end
+
+    it "includes the event name" do
+      expect(payload["event"]).to eq("new_account_notification")
+    end
   end
 end

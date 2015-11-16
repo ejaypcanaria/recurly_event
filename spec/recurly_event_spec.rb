@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe RecurlyEvent do
-  let(:callable) { Proc.new { |arg| arg }}
-  let(:payload)  { {"account" => { "account_code" => "1", "username" => "john.lennon"}} }
+  let(:callable) { Proc.new { |arg| arg } }
+  let(:payload)  { {"account" => { "account_code" => "1", "username" => "john.lennon"}, "event" => "new_account_notification"} }
 
   it "has a version number" do
     expect(RecurlyEvent::VERSION).not_to be nil

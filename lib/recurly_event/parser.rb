@@ -20,7 +20,8 @@ module RecurlyEvent
     end
 
     def payload
-      hash_from_request.first.last
+      payload = hash_from_request.first.last
+      payload.merge("event" => event_name)
     end
 
   private
