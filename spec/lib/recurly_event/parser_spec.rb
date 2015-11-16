@@ -46,4 +46,13 @@ describe RecurlyEvent::Parser do
       expect(payload["event"]).to eq("new_account_notification")
     end
   end
+
+  context "when the request body does not respond to string" do
+    let(:request) { double(:request, body: double(read: xml_string)) }
+
+    it "parses the XML properly" do
+      expect(payload["account"]).not_to be_empty
+      expect(payload["event"]).to eq("new_account_notification")
+    end
+  end
 end
